@@ -13,6 +13,19 @@ namespace AtmApp
         {
             int userResponse = UserPrompt();
 
+            switch (userResponse)
+            {
+                case 1:
+
+                case 2:
+
+                case 3:
+
+                case 4:
+
+                default:
+            }
+
 
         }
         static int UserPrompt()
