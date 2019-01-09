@@ -27,10 +27,10 @@ namespace AtmApp
                     DepositMoney();
                     break;
                 case 4:
-                    // ExitProgram();
+                    ExitProgram();
                     break;
                 default:
-                    // ExitProgram();
+                    ExitProgram();
                     break;
             }
 
@@ -40,8 +40,8 @@ namespace AtmApp
         {
             Console.WriteLine("What would you like to do today? ( 1/2/3/4)");
             Console.WriteLine("1. View Balance");
-            Console.WriteLine("2. Deposit Money");
-            Console.WriteLine("3. Withdraw Money");
+            Console.WriteLine("2. Withdraw Money");
+            Console.WriteLine("3. Deposit Money");
             Console.WriteLine("4. Exit");
             string userResponseStr = Console.ReadLine();
             int userResponse = Convert.ToInt32(userResponseStr);
@@ -51,6 +51,7 @@ namespace AtmApp
         static void ReadBalance()
         {
             Console.WriteLine($"Your Balance is: ${balance}");
+            Interface();
         }
         static void WithdrawMoney()
         {
@@ -69,6 +70,10 @@ namespace AtmApp
             balance = balance + userResponse;
             ReadBalance();
             Interface();
+        }
+        static void ExitProgram()
+        {
+            Environment.Exit(0);
         }
     }
 }
