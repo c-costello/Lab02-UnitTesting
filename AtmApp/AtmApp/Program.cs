@@ -49,43 +49,15 @@ namespace AtmApp
 
 
         }
-        //method handles the user input and converts the string to a decimal
-        public static int UserPrompt(string userInput)
-        {
-            string userResponseStr = userInput;
-            //if user hits enter, the program ends
-            if (userResponseStr == "")
-            {
-                ExitProgram();
-            }  
-            //try catch block to check for Format and OverFlow exceptions
-            //if an exception is caught, Interface is called and re-prompts user to select their method
-            try
-            {
-                int check = Convert.ToInt32(userResponseStr);
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("That's not a valid response!");
-                Interface();              
-
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Oops! Something went wrong!");
-                Interface();
-                throw;
-            }
-            //if no exceptions are caught, the method converts the string without issue 
-            int userResponse = Convert.ToInt32(userResponseStr);
-            return userResponse;
-        }
+        
+        
         //reads the given balance. Balance always starts at 5000
         public static void ReadBalance()
         {
             Console.WriteLine($"Your Balance is: ${balance}");
             AnotherTransactionPrompt();
         }
+        //Runs the withdraw feature of the app
         public static void WithdrawMoney()
         {
             bool running = true;
@@ -97,31 +69,7 @@ namespace AtmApp
                 userResponseStr = Console.ReadLine();
                 //try catch block to check for Format and OverFlow exceptions
                 //if an exception is caught, Interface is called and re-prompts user to select their method
-                try
-                {
-                    decimal check = Convert.ToDecimal(userResponseStr);
-                }
-                catch (FormatException)
-                {
-
-                    Console.WriteLine("That's not a number!");
-                    running = true;
-                }
-                catch (OverflowException)
-                {
-                    //if the user inputs a number to large for decimal to handle, the user is prompted to re-enter their amount, or got back to interface 
-                    Console.WriteLine("That's too much money. Deposit a smaller amount?");
-                    Console.Write("y/n: ");
-                    string response = Console.ReadLine();
-                    if (response == "y")
-                    {
-                        running = true;  
-                    } 
-                    else
-                    {
-                        Interface();
-                    }
-                }
+                running = ExceptionCheck(userResponseStr, running);
 
 
             } while (running == true);
@@ -142,37 +90,8 @@ namespace AtmApp
                 running = false;
                 Console.WriteLine("How much would you like to deposit?");
                 userResponseStr = Console.ReadLine();
-                try
-                {
-                    decimal check = Convert.ToDecimal(userResponseStr);
-                }
-                catch (FormatException)
-                {
-
-                    Console.WriteLine("That's not a number!");
-                    running = true;
-                }
-                catch (OverflowException)
-                {
-                    Console.WriteLine("That's too much money. Deposit a smaller amount?");
-                    Console.Write("y/n: ");
-                    string response = Console.ReadLine();
-                    if (response == "y")
-                    {
-                        running = true;
-                    }
-                    else
-                    {
-                        Interface();
-                    }
-                }
-
-
+                running = running = ExceptionCheck(userResponseStr, running);
             } while (running == true);
-
-
-
-
             decimal userResponse = Convert.ToDecimal(userResponseStr);
             AddMoney(userResponse);
             ReadBalance();
@@ -183,6 +102,38 @@ namespace AtmApp
             Environment.Exit(0);
         }
 
+
+        //method handles the user input and converts the string to a decimal
+        public static int UserPrompt(string userInput)
+        {
+            string userResponseStr = userInput;
+            //if user hits enter, the program ends
+            if (userResponseStr == "")
+            {
+                ExitProgram();
+            }
+            //try catch block to check for Format and OverFlow exceptions
+            //if an exception is caught, Interface is called and re-prompts user to select their method
+            try
+            {
+                int check = Convert.ToInt32(userResponseStr);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("That's not a valid response!");
+                Interface();
+
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Oops! Something went wrong!");
+                Interface();
+                throw;
+            }
+            //if no exceptions are caught, the method converts the string without issue 
+            int userResponse = Convert.ToInt32(userResponseStr);
+            return userResponse;
+        }
         //handles the actual addition for the deposit method
         public static decimal AddMoney(decimal moneyAmount)
         {
@@ -198,6 +149,7 @@ namespace AtmApp
             }
             return balance;
         }
+        //handles the subtraction for the withdraw method
         public static decimal SubtractMoney(decimal moneyAmount)
         {
             //if statement to disallow negative numbers and withdrawls greater than balance amount
@@ -212,6 +164,7 @@ namespace AtmApp
             }
             return balance;
         }
+        //handles the conditionals for starting another transaction
         public static void AnotherTransactionPrompt()
         {
             Console.WriteLine("Would you like another transaction?");
@@ -235,6 +188,37 @@ namespace AtmApp
                     Interface();
                 }
             }
+        }
+        // handles checking exceptions for withdraw and deposit methods
+        public static bool ExceptionCheck(string checkedResponse, bool running)
+        {
+            running = false;
+            try
+            {
+                decimal check = Convert.ToDecimal(checkedResponse);
+            }
+            catch (FormatException)
+            {
+
+                Console.WriteLine("That's not a number!");
+                running = true;
+            }
+            catch (OverflowException)
+            {
+                //if the user inputs a number to large for decimal to handle, the user is prompted to re-enter their amount, or got back to interface 
+                Console.WriteLine("That's too much money. Deposit a smaller amount?");
+                Console.Write("y/n: ");
+                string response = Console.ReadLine();
+                if (response == "y")
+                {
+                    running = true;
+                }
+                else
+                {
+                    Interface();
+                }
+            }
+            return running;
         }
     }
 }
