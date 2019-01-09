@@ -42,6 +42,6 @@ namespace AtmTests
             Assert.Equal(5000, Program.SubtractMoney(6000));
         }
 
-        //UserInput tests
+
     }
 }

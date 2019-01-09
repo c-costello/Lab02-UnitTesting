@@ -7,7 +7,7 @@ namespace AtmApp
         public static int balance = 5000;
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Welcome to the ATM!");
             Interface();
         }
         public static void Interface()
@@ -157,7 +157,6 @@ namespace AtmApp
             }
             return balance;
         }
-
         public static int SubtractMoney(int moneyAmount)
         {
             if (moneyAmount < 0 || moneyAmount > balance)
