@@ -101,6 +101,20 @@ namespace AtmApp
                     Console.WriteLine("That's not a number!");
                     running = true;
                 }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("That's too much money. Deposit a smaller amount?");
+                    Console.Write("y/n");
+                    string response = Console.ReadLine();
+                    if (response == "y")
+                    {
+                        running = true;  
+                    } 
+                    else
+                    {
+                        Interface();
+                    }
+                }
 
 
             } while (running == true);                                                               
@@ -116,7 +130,7 @@ namespace AtmApp
             do
             {
                 running = false;
-                Console.WriteLine("How much would you like to withdraw?");
+                Console.WriteLine("How much would you like to deposit?");
                 userResponseStr = Console.ReadLine();
                 try
                 {
@@ -127,6 +141,20 @@ namespace AtmApp
 
                     Console.WriteLine("That's not a number!");
                     running = true;
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("That's too much money. Deposit a smaller amount?");
+                    Console.Write("y/n");
+                    string response = Console.ReadLine();
+                    if (response == "y")
+                    {
+                        running = true;
+                    }
+                    else
+                    {
+                        Interface();
+                    }
                 }
 
 
