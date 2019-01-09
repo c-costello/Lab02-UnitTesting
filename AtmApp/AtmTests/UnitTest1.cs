@@ -23,6 +23,12 @@ namespace AtmTests
 
         //SubtractMoney tests
         [Fact]
+        public void CanSubtractTwoNumbers()
+        {
+            Program.balance = 5000;
+            Assert.Equal(4000, Program.SubtractMoney(1000));
+        }
+        [Fact]
         public void CannotWithdrawNegatives()
 
         {
