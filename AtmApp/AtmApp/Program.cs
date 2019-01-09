@@ -84,28 +84,7 @@ namespace AtmApp
         public static void ReadBalance()
         {
             Console.WriteLine($"Your Balance is: ${balance}");
-            //check for another transaction 
-            Console.WriteLine("Would you like another transaction?");
-            Console.WriteLine("y/n: ");
-            string newTransactionResponse = Console.ReadLine();
-            if (newTransactionResponse == "y")
-            {
-                Interface();
-            }
-            else
-            {
-                Console.WriteLine("Exit Program?");
-                Console.WriteLine("y/n: ");
-                string exitResponse = Console.ReadLine();
-                if (exitResponse == "n")
-                {
-                    ExitProgram();
-                }
-                else
-                {
-                    Interface();
-                }
-            }
+            AnotherTransactionPrompt();
         }
         public static void WithdrawMoney()
         {
@@ -152,28 +131,6 @@ namespace AtmApp
             SubtractMoney(userResponse);
             //ReadBalance is called to let the user know how much money is left
             ReadBalance();
-            //Lastly, check for another transation
-            Console.WriteLine("Would you like another transaction?");
-            Console.WriteLine("y/n: ");
-            string newTransactionResponse = Console.ReadLine();
-            if (newTransactionResponse == "y")
-            {
-                Interface();
-            }
-            else
-            {
-                Console.WriteLine("Exit Program?");
-                Console.WriteLine("y/n: ");
-                string exitResponse = Console.ReadLine();
-                if (exitResponse == "n")
-                {
-                    ExitProgram();
-                }
-                else
-                {
-                    Interface();
-                }
-            }
         }
         //Does all the same things as the Withdraw method, but with addtion instead of subtraction
         public static void DepositMoney()
@@ -219,27 +176,6 @@ namespace AtmApp
             decimal userResponse = Convert.ToDecimal(userResponseStr);
             AddMoney(userResponse);
             ReadBalance();
-            Console.WriteLine("Would you like another transaction?");
-            Console.WriteLine("y/n: ");
-            string newTransactionResponse = Console.ReadLine();
-            if (newTransactionResponse == "y")
-            {
-                Interface();
-            }
-            else
-            {
-                Console.WriteLine("Exit Program?");
-                Console.WriteLine("y/n: ");
-                string exitResponse = Console.ReadLine();
-                if (exitResponse == "n")
-                {
-                    ExitProgram();
-                }
-                else
-                {
-                    Interface();
-                }
-            }
         }
         //closes the program when called
         public static void ExitProgram()
@@ -275,6 +211,30 @@ namespace AtmApp
                 balance = balance - moneyAmount;
             }
             return balance;
+        }
+        public static void AnotherTransactionPrompt()
+        {
+            Console.WriteLine("Would you like another transaction?");
+            Console.WriteLine("y/n: ");
+            string newTransactionResponse = Console.ReadLine();
+            if (newTransactionResponse == "y")
+            {
+                Interface();
+            }
+            else
+            {
+                Console.WriteLine("Exit Program?");
+                Console.WriteLine("y/n: ");
+                string exitResponse = Console.ReadLine();
+                if (exitResponse == "y")
+                {
+                    ExitProgram();
+                }
+                else
+                {
+                    Interface();
+                }
+            }
         }
     }
 }
