@@ -104,7 +104,7 @@ namespace AtmApp
                 catch (OverflowException)
                 {
                     Console.WriteLine("That's too much money. Deposit a smaller amount?");
-                    Console.Write("y/n");
+                    Console.Write("y/n: ");
                     string response = Console.ReadLine();
                     if (response == "y")
                     {
@@ -145,7 +145,7 @@ namespace AtmApp
                 catch (OverflowException)
                 {
                     Console.WriteLine("That's too much money. Deposit a smaller amount?");
-                    Console.Write("y/n");
+                    Console.Write("y/n: ");
                     string response = Console.ReadLine();
                     if (response == "y")
                     {
