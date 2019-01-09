@@ -2,7 +2,7 @@
 
 namespace AtmApp
 {
-    class Program
+    public class Program
     {
         public static int balance = 5000;
         static void Main(string[] args)
@@ -10,7 +10,7 @@ namespace AtmApp
             Console.WriteLine("Hello World!");
             Interface();
         }
-        static void Interface()
+        public static void Interface()
         {
             int userResponse = UserPrompt();
 
@@ -36,7 +36,7 @@ namespace AtmApp
 
 
         }
-        static int UserPrompt()
+        public static int UserPrompt()
         {
             Console.WriteLine("What would you like to do today? ( 1/2/3/4)");
             Console.WriteLine("1. View Balance");
@@ -48,12 +48,12 @@ namespace AtmApp
             return userResponse;
         }
 
-        static void ReadBalance()
+        public static void ReadBalance()
         {
             Console.WriteLine($"Your Balance is: ${balance}");
             Interface();
         }
-        static void WithdrawMoney()
+        public static void WithdrawMoney()
         {
             Console.WriteLine("How much would you like to withdraw?");
             string userResponseStr = Console.ReadLine();
@@ -62,7 +62,7 @@ namespace AtmApp
             ReadBalance();
             Interface();
         }
-        static void DepositMoney()
+        public static void DepositMoney()
         {
             Console.WriteLine("How much would you like to deposit?");
             string userResponseStr = Console.ReadLine();
@@ -71,7 +71,7 @@ namespace AtmApp
             ReadBalance();
             Interface();
         }
-        static void ExitProgram()
+        public static void ExitProgram()
         {
             Environment.Exit(0);
         }
