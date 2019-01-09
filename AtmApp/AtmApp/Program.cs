@@ -23,12 +23,15 @@ namespace AtmApp
                 case 2:
                     WithdrawMoney();
                     break;
+
                 case 3:
                     DepositMoney();
                     break;
+
                 case 4:
                     ExitProgram();
                     break;
+
                 default:
                     ExitProgram();
                     break;
@@ -38,12 +41,34 @@ namespace AtmApp
         }
         public static int UserPrompt()
         {
+            string userResponseStr;
+            bool running = true;
+            do
+            {
             Console.WriteLine("What would you like to do today? ( 1/2/3/4)");
             Console.WriteLine("1. View Balance");
             Console.WriteLine("2. Withdraw Money");
             Console.WriteLine("3. Deposit Money");
             Console.WriteLine("4. Exit");
-            string userResponseStr = Console.ReadLine();
+            userResponseStr = Console.ReadLine();
+                running = false;
+                try
+                {
+                    int check = Convert.ToInt32(userResponseStr);
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine("That's not a valid response!");
+                    running = true;               
+
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Oops! Something went wrong!");
+                    running = true;
+                    throw;
+                }
+            } while (running == true);
             int userResponse = Convert.ToInt32(userResponseStr);
             return userResponse;
         }
