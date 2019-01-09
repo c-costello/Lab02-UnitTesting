@@ -9,7 +9,7 @@ namespace AtmTests
         [Fact]
         public void CannotAddNegatives()
         {
-            
+            Assert.Equal(5000, Program.AddMoney(-500));
         }
     }
 }
