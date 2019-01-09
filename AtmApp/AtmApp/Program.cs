@@ -11,17 +11,19 @@ namespace AtmApp
             //calls the interface
             Interface();
         }
-        //function that handles the interface and allows the user to see their options. Handles their selections
+        //method that handles the interface and allows the user to see their options. Handles their selections
         public static void Interface()
         {
+            //user instructions and prompts to select a method 
             Console.WriteLine("What would you like to do today? ( 1/2/3/4)");
             Console.WriteLine("1. View Balance");
             Console.WriteLine("2. Withdraw Money");
             Console.WriteLine("3. Deposit Money");
             Console.WriteLine("4. Exit");
             string userResponseStr = Console.ReadLine();
+            //exception catcher and other error handler. UserPrompt processes the input
             int userResponse = UserPrompt(userResponseStr);
-
+            //case switch that handles the UserResponse and calls the selected method
             switch (userResponse)
             {
                 case 1:
@@ -47,14 +49,17 @@ namespace AtmApp
 
 
         }
+        //method handles the user input and converts the string to a decimal
         public static int UserPrompt(string userInput)
         {
             string userResponseStr = userInput;
+            //if user hits enter, the program ends
             if (userResponseStr == "")
             {
                 ExitProgram();
-            }
-           
+            }  
+            //try catch block to check for Format and OverFlow exceptions
+            //if an exception is caught, Interface is called and re-prompts user to select their method
             try
             {
                 int check = Convert.ToInt32(userResponseStr);
@@ -71,11 +76,11 @@ namespace AtmApp
                 Interface();
                 throw;
             }
-
+            //if no exceptions are caught, the method converts the string without issue 
             int userResponse = Convert.ToInt32(userResponseStr);
             return userResponse;
         }
-
+        //reads the given balance. Balance always starts at 5000
         public static void ReadBalance()
         {
             Console.WriteLine($"Your Balance is: ${balance}");
@@ -90,6 +95,8 @@ namespace AtmApp
                 running = false;
                 Console.WriteLine("How much would you like to withdraw?");
                 userResponseStr = Console.ReadLine();
+                //try catch block to check for Format and OverFlow exceptions
+                //if an exception is caught, Interface is called and re-prompts user to select their method
                 try
                 {
                     decimal check = Convert.ToDecimal(userResponseStr);
@@ -102,6 +109,7 @@ namespace AtmApp
                 }
                 catch (OverflowException)
                 {
+                    //if the user inputs a number to large for decimal to handle, the user is prompted to re-enter their amount, or got back to interface 
                     Console.WriteLine("That's too much money. Deposit a smaller amount?");
                     Console.Write("y/n: ");
                     string response = Console.ReadLine();
@@ -117,9 +125,13 @@ namespace AtmApp
 
 
             } while (running == true);
+            //if no exception is caught, the method then converts the string to a decimal without issues
             decimal userResponse = Convert.ToDecimal(userResponseStr);
+            //SubtractMoney handles the actual math
             SubtractMoney(userResponse);
+            //ReadBalance is called to let the user know how much money is left
             ReadBalance();
+            //Lastly, interface is called 
             Interface();
         }
         public static void DepositMoney()
