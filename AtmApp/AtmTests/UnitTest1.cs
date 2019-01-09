@@ -16,5 +16,10 @@ namespace AtmTests
         {
             Assert.Equal(5000, Program.SubtractMoney(-500));
         }
+        [Fact]
+        public void CannotWithdrawMoreThanBalance()
+        {
+            Assert.Equal(5000, Program.SubtractMoney(6000));
+        }
     }
 }

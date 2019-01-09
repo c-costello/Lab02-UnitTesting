@@ -78,7 +78,7 @@ namespace AtmApp
 
         public static int AddMoney(int moneyAmount)
         {
-            if (moneyAmount < 0)
+            if (moneyAmount < 0 )
             {
                 Console.WriteLine("Oops! No negative Numbers!");                
             }
@@ -91,7 +91,7 @@ namespace AtmApp
 
         public static int SubtractMoney(int moneyAmount)
         {
-            if (moneyAmount < 0)
+            if (moneyAmount < 0 || moneyAmount > balance)
             {
                 Console.WriteLine("Oops! No negative Numbers!");
             }
