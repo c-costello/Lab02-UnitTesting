@@ -11,5 +11,10 @@ namespace AtmTests
         {
             Assert.Equal(5000, Program.AddMoney(-500));
         }
+        [Fact]
+        public void CannotWithdrawNegatives()
+        {
+            Assert.Equal(5000, Program.SubtractMoney(-500));
+        }
     }
 }
