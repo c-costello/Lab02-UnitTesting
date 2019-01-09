@@ -58,7 +58,7 @@ namespace AtmApp
             Console.WriteLine("How much would you like to withdraw?");
             string userResponseStr = Console.ReadLine();
             int userResponse = Convert.ToInt32(userResponseStr);
-            balance = balance - userResponse;
+            SubtractMoney(userResponse);
             ReadBalance();
             Interface();
         }
@@ -79,6 +79,12 @@ namespace AtmApp
         public static int AddMoney(int moneyAmount)
         {
             balance = balance + moneyAmount;
+            return balance;
+        }
+
+        public static int SubtractMoney(int moneyAmount)
+        {
+            balance = balance - moneyAmount;
             return balance;
         }
     }

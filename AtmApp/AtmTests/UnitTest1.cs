@@ -9,8 +9,7 @@ namespace AtmTests
         [Fact]
         public void CannotAddNegatives()
         {
-
-
+            
         }
     }
 }
