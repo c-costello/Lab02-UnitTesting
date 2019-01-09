@@ -4,6 +4,7 @@ namespace AtmApp
 {
     class Program
     {
+        public static int balance = 5000;
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
@@ -16,14 +17,21 @@ namespace AtmApp
             switch (userResponse)
             {
                 case 1:
+                    ReadBalance();
+                    break;
 
                 case 2:
-
+                    // WithdrawMoney();
+                    break;
                 case 3:
-
+                    // DepositMoney();
+                    break;
                 case 4:
-
+                    // ExitProgram();
+                    break;
                 default:
+                    // ExitProgram();
+                    break;
             }
 
 
@@ -38,6 +46,11 @@ namespace AtmApp
             string userResponseStr = Console.ReadLine();
             int userResponse = Convert.ToInt32(userResponseStr);
             return userResponse;
+        }
+
+        static void ReadBalance()
+        {
+            Console.WriteLine($"Your Balance is: ${balance}");
         }
     }
 }
