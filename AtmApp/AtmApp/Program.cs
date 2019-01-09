@@ -8,11 +8,19 @@ namespace AtmApp
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the ATM!");
+            //calls the interface
             Interface();
         }
+        //function that handles the interface and allows the user to see their options. Handles their selections
         public static void Interface()
         {
-            int userResponse = UserPrompt();
+            Console.WriteLine("What would you like to do today? ( 1/2/3/4)");
+            Console.WriteLine("1. View Balance");
+            Console.WriteLine("2. Withdraw Money");
+            Console.WriteLine("3. Deposit Money");
+            Console.WriteLine("4. Exit");
+            string userResponseStr = Console.ReadLine();
+            int userResponse = UserPrompt(userResponseStr);
 
             switch (userResponse)
             {
@@ -39,40 +47,31 @@ namespace AtmApp
 
 
         }
-        public static int UserPrompt()
+        public static int UserPrompt(string userInput)
         {
-            string userResponseStr;
-            bool running = true;
-            do
+            string userResponseStr = userInput;
+            if (userResponseStr == "")
             {
-                Console.WriteLine("What would you like to do today? ( 1/2/3/4)");
-                Console.WriteLine("1. View Balance");
-                Console.WriteLine("2. Withdraw Money");
-                Console.WriteLine("3. Deposit Money");
-                Console.WriteLine("4. Exit");
-                userResponseStr = Console.ReadLine();
-                if (userResponseStr == "")
-               {
-                    ExitProgram();
-               }
-                running = false;
-                try
-                {
-                    int check = Convert.ToInt32(userResponseStr);
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("That's not a valid response!");
-                    running = true;               
+                ExitProgram();
+            }
+           
+            try
+            {
+                int check = Convert.ToInt32(userResponseStr);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("That's not a valid response!");
+                Interface();              
 
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Oops! Something went wrong!");
-                    running = true;
-                    throw;
-                }
-            } while (running == true);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Oops! Something went wrong!");
+                Interface();
+                throw;
+            }
+
             int userResponse = Convert.ToInt32(userResponseStr);
             return userResponse;
         }
