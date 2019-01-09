@@ -21,7 +21,7 @@ namespace AtmApp
                     break;
 
                 case 2:
-                    // WithdrawMoney();
+                    WithdrawMoney();
                     break;
                 case 3:
                     // DepositMoney();
@@ -51,6 +51,14 @@ namespace AtmApp
         static void ReadBalance()
         {
             Console.WriteLine($"Your Balance is: ${balance}");
+        }
+        static void WithdrawMoney()
+        {
+            Console.WriteLine("How much would you like to withdraw?");
+            string userResponseStr = Console.ReadLine();
+            int userResponse = Convert.ToInt32(userResponseStr);
+            balance = balance - userResponse;
+            ReadBalance();
         }
     }
 }
