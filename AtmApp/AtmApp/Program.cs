@@ -4,7 +4,7 @@ namespace AtmApp
 {
     public class Program
     {
-        public static int balance = 5000;
+        public static decimal balance = 5000;
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the ATM!");
@@ -45,13 +45,13 @@ namespace AtmApp
             bool running = true;
             do
             {
-            Console.WriteLine("What would you like to do today? ( 1/2/3/4)");
-            Console.WriteLine("1. View Balance");
-            Console.WriteLine("2. Withdraw Money");
-            Console.WriteLine("3. Deposit Money");
-            Console.WriteLine("4. Exit");
-            userResponseStr = Console.ReadLine();
-            if (userResponseStr == "")
+                Console.WriteLine("What would you like to do today? ( 1/2/3/4)");
+                Console.WriteLine("1. View Balance");
+                Console.WriteLine("2. Withdraw Money");
+                Console.WriteLine("3. Deposit Money");
+                Console.WriteLine("4. Exit");
+                userResponseStr = Console.ReadLine();
+                if (userResponseStr == "")
                {
                     ExitProgram();
                }
@@ -60,7 +60,7 @@ namespace AtmApp
                 {
                     int check = Convert.ToInt32(userResponseStr);
                 }
-                catch (FormatException e)
+                catch (FormatException)
                 {
                     Console.WriteLine("That's not a valid response!");
                     running = true;               
@@ -93,7 +93,7 @@ namespace AtmApp
                 userResponseStr = Console.ReadLine();
                 try
                 {
-                    int check = Convert.ToInt32(userResponseStr);
+                    decimal check = Convert.ToDecimal(userResponseStr);
                 }
                 catch (FormatException)
                 {
@@ -117,8 +117,8 @@ namespace AtmApp
                 }
 
 
-            } while (running == true);                                                               
-            int userResponse = Convert.ToInt32(userResponseStr);
+            } while (running == true);
+            decimal userResponse = Convert.ToDecimal(userResponseStr);
             SubtractMoney(userResponse);
             ReadBalance();
             Interface();
@@ -134,7 +134,7 @@ namespace AtmApp
                 userResponseStr = Console.ReadLine();
                 try
                 {
-                    int check = Convert.ToInt32(userResponseStr);
+                    decimal check = Convert.ToDecimal(userResponseStr);
                 }
                 catch (FormatException)
                 {
@@ -163,7 +163,7 @@ namespace AtmApp
 
 
 
-            int userResponse = Convert.ToInt32(userResponseStr);
+            decimal userResponse = Convert.ToDecimal(userResponseStr);
             AddMoney(userResponse);
             ReadBalance();
             Interface();
@@ -173,7 +173,7 @@ namespace AtmApp
             Environment.Exit(0);
         }
 
-        public static int AddMoney(int moneyAmount)
+        public static decimal AddMoney(decimal moneyAmount)
         {
             if (moneyAmount < 0 )
             {
@@ -185,7 +185,7 @@ namespace AtmApp
             }
             return balance;
         }
-        public static int SubtractMoney(int moneyAmount)
+        public static decimal SubtractMoney(decimal moneyAmount)
         {
             if (moneyAmount < 0 || moneyAmount > balance)
             {
