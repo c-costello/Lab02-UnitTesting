@@ -134,6 +134,7 @@ namespace AtmApp
             //Lastly, interface is called 
             Interface();
         }
+        //Does all the same things as the Withdraw method, but with addtion instead of subtraction
         public static void DepositMoney()
         {
             bool running = true;
@@ -179,31 +180,37 @@ namespace AtmApp
             ReadBalance();
             Interface();
         }
+        //closes the program when called
         public static void ExitProgram()
         {
             Environment.Exit(0);
         }
 
+        //handles the actual addition for the deposit method
         public static decimal AddMoney(decimal moneyAmount)
         {
+            //if statement to disallow negative numbers
             if (moneyAmount < 0 )
             {
                 Console.WriteLine("Oops! No negative Numbers!");                
             }
             else
             {
-            balance = balance + moneyAmount;
+                //actual transaction addtion
+                balance = balance + moneyAmount;
             }
             return balance;
         }
         public static decimal SubtractMoney(decimal moneyAmount)
         {
+            //if statement to disallow negative numbers and withdrawls greater than balance amount
             if (moneyAmount < 0 || moneyAmount > balance)
             {
                 Console.WriteLine("Oops! No negative Numbers!");
             }
             else
             {
+                //actual transaction subtraction 
                 balance = balance - moneyAmount;
             }
             return balance;
