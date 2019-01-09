@@ -67,13 +67,19 @@ namespace AtmApp
             Console.WriteLine("How much would you like to deposit?");
             string userResponseStr = Console.ReadLine();
             int userResponse = Convert.ToInt32(userResponseStr);
-            balance = balance + userResponse;
+            AddMoney(userResponse);
             ReadBalance();
             Interface();
         }
         public static void ExitProgram()
         {
             Environment.Exit(0);
+        }
+
+        public static int AddMoney(int moneyAmount)
+        {
+            balance = balance + moneyAmount;
+            return balance;
         }
     }
 }
