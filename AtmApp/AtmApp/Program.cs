@@ -51,6 +51,10 @@ namespace AtmApp
             Console.WriteLine("3. Deposit Money");
             Console.WriteLine("4. Exit");
             userResponseStr = Console.ReadLine();
+            if (userResponseStr == "")
+               {
+                    ExitProgram();
+               }
                 running = false;
                 try
                 {
@@ -107,8 +111,30 @@ namespace AtmApp
         }
         public static void DepositMoney()
         {
-            Console.WriteLine("How much would you like to deposit?");
-            string userResponseStr = Console.ReadLine();
+            bool running = true;
+            string userResponseStr;
+            do
+            {
+                running = false;
+                Console.WriteLine("How much would you like to withdraw?");
+                userResponseStr = Console.ReadLine();
+                try
+                {
+                    int check = Convert.ToInt32(userResponseStr);
+                }
+                catch (FormatException)
+                {
+
+                    Console.WriteLine("That's not a number!");
+                    running = true;
+                }
+
+
+            } while (running == true);
+
+
+
+
             int userResponse = Convert.ToInt32(userResponseStr);
             AddMoney(userResponse);
             ReadBalance();
