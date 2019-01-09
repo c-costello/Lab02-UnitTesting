@@ -80,8 +80,26 @@ namespace AtmApp
         }
         public static void WithdrawMoney()
         {
-            Console.WriteLine("How much would you like to withdraw?");
-            string userResponseStr = Console.ReadLine();
+            bool running = true;
+            string userResponseStr;
+            do
+            {
+                running = false;
+                Console.WriteLine("How much would you like to withdraw?");
+                userResponseStr = Console.ReadLine();
+                try
+                {
+                    int check = Convert.ToInt32(userResponseStr);
+                }
+                catch (FormatException)
+                {
+
+                    Console.WriteLine("That's not a number!");
+                    running = true;
+                }
+
+
+            } while (running == true);                                                               
             int userResponse = Convert.ToInt32(userResponseStr);
             SubtractMoney(userResponse);
             ReadBalance();
