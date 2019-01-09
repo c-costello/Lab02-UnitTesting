@@ -42,6 +42,13 @@ namespace AtmTests
             Assert.Equal(5000, Program.SubtractMoney(6000));
         }
 
+        //UserPrompt tests
+        [Fact]
+        public void CanAcceptOne()
+        {
+            Assert.Equal(1, Program.UserPrompt("1"));
+        }
+        
 
     }
 }
