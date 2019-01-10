@@ -48,7 +48,21 @@ namespace AtmTests
         {
             Assert.Equal(1, Program.UserPrompt("1"));
         }
+        [Fact]
+        public void CanAcceptTwo()
+        {
+            Assert.Equal(2, Program.UserPrompt("2"));
+        }
+        [Fact]
+        public void CanAcceptThree()
+        {
+            Assert.Equal(3, Program.UserPrompt("3"));
+        }
+        [Fact]
+        public void CanAcceptFour()
+        {
+            Assert.Equal(4, Program.UserPrompt("4"));
+        }
         
-
     }
 }
