@@ -218,6 +218,10 @@ namespace AtmApp
                     Interface();
                 }
             }
+            catch (Exception)
+            {
+                throw;
+            }
             return running;
         }
     }
