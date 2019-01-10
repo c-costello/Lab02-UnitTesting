@@ -15,7 +15,7 @@ namespace AtmApp
         public static void Interface()
         {
             //user instructions and prompts to select a method 
-            Console.WriteLine("What would you like to do today? ( 1/2/3/4)");
+            Console.WriteLine("What would you like to do today? (1/2/3/4)");
             Console.WriteLine("1. View Balance");
             Console.WriteLine("2. Withdraw Money");
             Console.WriteLine("3. Deposit Money");
