@@ -63,6 +63,16 @@ namespace AtmTests
         {
             Assert.Equal(4, Program.UserPrompt("4"));
         }
-        
+        //ExceptionCheck tests
+        [Fact]
+        public void CanHandleNumbers()
+        {
+            Assert.False(Program.ExceptionCheck("12", true));
+        }
+        [Fact]
+        public void DoesNotPassStrings()
+        {
+            Assert.True(Program.ExceptionCheck("twelve", true));
+        }
     }
 }

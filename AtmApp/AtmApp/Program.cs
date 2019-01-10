@@ -90,7 +90,7 @@ namespace AtmApp
                 running = false;
                 Console.WriteLine("How much would you like to deposit?");
                 userResponseStr = Console.ReadLine();
-                running = running = ExceptionCheck(userResponseStr, running);
+                running = ExceptionCheck(userResponseStr, running);
             } while (running == true);
             decimal userResponse = Convert.ToDecimal(userResponseStr);
             AddMoney(userResponse);
@@ -206,7 +206,7 @@ namespace AtmApp
             catch (OverflowException)
             {
                 //if the user inputs a number to large for decimal to handle, the user is prompted to re-enter their amount, or got back to interface 
-                Console.WriteLine("That's too much money. Deposit a smaller amount?");
+                Console.WriteLine("That's too much money. Enter a smaller amount?");
                 Console.Write("y/n: ");
                 string response = Console.ReadLine();
                 if (response == "y")
